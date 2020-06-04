@@ -1,0 +1,11 @@
+apply from: "$projectDir/../server.gradle"
+
+
+
+group = 'org.dell.edu.kube'
+version = '0.0.1-SNAPSHOT'
+
+description("Category Server")
+dependencies {
+    implementation project(":component:category")
+}

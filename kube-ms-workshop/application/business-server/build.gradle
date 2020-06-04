@@ -1,0 +1,12 @@
+apply from: "$projectDir/../server.gradle"
+
+
+group = 'org.edu.dell.kube.workshop'
+version = '0.0.1-SNAPSHOT'
+description("Business Server")
+
+dependencies {
+    implementation project(":component:category")
+    implementation project(":component:business")
+
+}

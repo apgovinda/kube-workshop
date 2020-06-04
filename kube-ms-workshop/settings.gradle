@@ -1,0 +1,6 @@
+rootProject.name = 'kube-ms-workshop'
+include 'application:business-server'
+include 'application:category-server'
+include 'component:business'
+include 'component:category'
+
