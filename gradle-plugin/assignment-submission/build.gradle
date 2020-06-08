@@ -1,0 +1,50 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+//Starts for maven publish
+group 'org.dell.edu'
+version '1.0.0'
+
+gradlePlugin {
+    plugins {
+        assignment {
+            id = 'org.dell.edu'
+            implementationClass = 'org.dell.edu.kube.workshop.assignment.KubeWorkshopAssignment'
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            def releasesRepoUrl = "s3://dell-edu-lab-store.s3.ap-south-1.amazonaws.com/release"
+            def snapshotsRepoUrl = "s3://dell-edu-lab-store.s3.ap-south-1.amazonaws.com/snapshot"
+            //url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            //url = project.hasProperty('snapshot') ? snapshotsRepoUrl : releasesRepoUrl
+            url = project.hasProperty('release') ? releasesRepoUrl : snapshotsRepoUrl
+            print "The url is ${releasesRepoUrl} and ${snapshotsRepoUrl} and ${url}"
+            credentials(AwsCredentials) {
+                accessKey "AKIARVVEBSPLQ53SURW3"
+                secretKey "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"
+            }
+        }
+    }
+
+    publications {
+        mavenJava(MavenPublication) {
+            version = project.version
+            artifactId = project.name
+            groupId = project.group
+            artifact("$buildDir/libs/${project.name}-${project.version}.jar")
+        }
+    }
+}
+
+//Ends for Maven publish
+task hello{
+    doLast {
+        print 'hello'
+    }
+}
