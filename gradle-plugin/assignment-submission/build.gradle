@@ -11,7 +11,7 @@ gradlePlugin {
     plugins {
         assignment {
             id = 'org.dell.edu'
-            implementationClass = 'org.dell.edu.kube.workshop.assignment.KubeWorkshopAssignment'
+            implementationClass = 'org.dell.edu.kube.workshop.assignment.KubeWorkshopAssignmentPlugin'
         }
     }
 }
@@ -19,11 +19,12 @@ gradlePlugin {
 publishing {
     repositories {
         maven {
-            def releasesRepoUrl = "s3://dell-edu-lab-store.s3.ap-south-1.amazonaws.com/release"
-            def snapshotsRepoUrl = "s3://dell-edu-lab-store.s3.ap-south-1.amazonaws.com/snapshot"
+            url = "s3://dell-edu-lab-store.s3.ap-south-1.amazonaws.com"
+            //def releasesRepoUrl = "s3://dell-edu-lab-store.s3.ap-south-1.amazonaws.com/release"
+            //def snapshotsRepoUrl = "s3://dell-edu-lab-store.s3.ap-south-1.amazonaws.com/snapshot"
             //url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
             //url = project.hasProperty('snapshot') ? snapshotsRepoUrl : releasesRepoUrl
-            url = project.hasProperty('release') ? releasesRepoUrl : snapshotsRepoUrl
+            //url = project.hasProperty('release') ? releasesRepoUrl : snapshotsRepoUrl
             credentials(AwsCredentials) {
                 accessKey AWS_ACCESS_KEY
                 secretKey AWS_SECRET_KEY

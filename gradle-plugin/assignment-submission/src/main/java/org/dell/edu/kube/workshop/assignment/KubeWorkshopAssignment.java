@@ -21,7 +21,7 @@ public class KubeWorkshopAssignment extends DefaultTask {
 
     @TaskAction
     void greet() {
-        System.out.println( greeting);
+        getLogger().debug(greeting);
     }
 
     private String url;
@@ -41,6 +41,11 @@ public class KubeWorkshopAssignment extends DefaultTask {
         getLogger().quiet("Verifying URL '{}'", url);
 
         // verify URL by making a HTTP call
+    }
+
+    @TaskAction
+    public void submit(){
+        getLogger().debug("Submit assignment");
     }
 
 }
