@@ -6,7 +6,6 @@ plugins {
 //Starts for maven publish
 group 'org.dell.edu'
 version '1.0.0'
-
 gradlePlugin {
     plugins {
         assignment {

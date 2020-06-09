@@ -5,24 +5,12 @@ import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 import org.gradle.api.tasks.options.Option;
 
-public class KubeWorkshopAssignment extends DefaultTask {
 
-    @Input
-    String greeting = "hello from GreetingTask";
+public class VerifyTask extends DefaultTask {
 
 
-    public String getGreeting() {
-        return greeting;
-    }
 
-    public void setGreeting(String greeting) {
-        this.greeting = greeting;
-    }
 
-    @TaskAction
-    void greet() {
-        getLogger().debug(greeting);
-    }
 
     private String url;
 
@@ -39,13 +27,6 @@ public class KubeWorkshopAssignment extends DefaultTask {
     @TaskAction
     public void verify() {
         getLogger().quiet("Verifying URL '{}'", url);
-
-        // verify URL by making a HTTP call
-    }
-
-    @TaskAction
-    public void submit(){
-        getLogger().debug("Submit assignment");
     }
 
 }
